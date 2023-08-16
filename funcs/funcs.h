@@ -1,0 +1,1 @@
+var  call_function(char * name);
