@@ -1,5 +1,5 @@
 #include "../toplevel.h"
-extern context ctx;
+
 var  call_function(char * name){
 	function *v;
 	v=&function_start;
@@ -8,6 +8,7 @@ var  call_function(char * name){
 			if(v->ip==NULL)
 				break;
 			//var *func()=v->ip;
+			
 			var ret=((var (*)())v->ip)();
 			return ret;
 		}

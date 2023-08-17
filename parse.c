@@ -90,7 +90,43 @@ char * parse(char * code,char end_char){
 				ret = _ret;
 			}
 		}
-		if(code[ctx.ip]=='\\')
+		if(code[ctx.ip]=='\\'){
+			char * tmp=malloc(sizeof(char)*MAX_STR_LEN);
+			int count=0;
+			while(code[++ctx.ip]!='{'|| 
+				code[ctx.ip]!=' '||
+				code[ctx.ip]!='\0') {
+					if(count+1>MAX_STR_LEN){
+						if(pret+1+10 <= MAX_STR_LEN*(max_len_plus_times-1)){
+							strcpy(ret+pret,"Bad syntax");
+							pret+=10;
+						}
+						else{
+							char * _ret = malloc(
+								sizeof(char)*
+								MAX_STR_LEN*
+								(max_len_plus_times++)
+							);
+							strcpy(_ret,ret);
+							//ctx.ip++;
+							strcat(_ret+pret,"Bad syntax");
+							pret+=10;
+							free(ret);
+							ret = _ret;
+
+						}
+						break;
+					}
+					tmp[count++]=code[ctx.ip];
+			}
+
+			while(code[ctx.ip]=='{'){
+				++ctx.ip;
+				parse(code,'{');
+				++ctx.ip;
+			}
+		}
+		
 		ctx.ip++;
 	}
 	return ret;
