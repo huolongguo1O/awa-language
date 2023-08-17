@@ -2,8 +2,8 @@ TARGET = main
 ARGS = -Wall
 CC = gcc
 
-main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o
-	$(CC) -o fly build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o
+main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o
+	$(CC) -o fly build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o
 
 build/var.o:var.c
 	$(CC) -c var.c -o build/var.o $(ARGS)
@@ -37,6 +37,9 @@ build/object.o:types/object.c
 
 build/null.o:types/null.c
 	$(CC) -c types/null.c -o build/null.o $(ARGS)
+
+build/types.o:types/types.c
+	$(CC) -c types/types.c -o build/types.o $(ARGS)
 
 clean:
 	rm -rf build/*
