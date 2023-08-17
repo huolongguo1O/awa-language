@@ -3,7 +3,7 @@ char * nullstring = "null";
 char * tostring(var  v){
 	switch(v.type){
 		case FL_TYPE_NULL:
-			return nullstring;
+			return var_start.value;
 			break;
 		case FL_TYPE_INT:
 			return int_tostring(v);
@@ -12,7 +12,7 @@ char * tostring(var  v){
 			return v.value;
 			break;
 		default:
-			return "unknown";
+			return var_start.value;
 			break;
 	}
 }

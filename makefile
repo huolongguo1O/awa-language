@@ -1,10 +1,10 @@
 TARGET = main
-ARGS = -Wall
+ARGS = -Wall -g
 CC = gcc
 OUT = fly.exe
 
 main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o
-	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o
+	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o -g
 
 build/var.o:var.c
 	$(CC) -c var.c -o build/var.o $(ARGS)
@@ -44,4 +44,4 @@ build/types.o:types/types.c
 
 clean:
 	rm -rf build/*
-	rm fly
+	rm $(OUT)
