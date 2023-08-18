@@ -29,6 +29,22 @@ char * get_function_name(char * start){
 		ret = str_appened(ret, tmp,&p,&plus_times);
 		p++;
 	}
+	ctx.ip += p-start;
 	return ret;
+
+}
+
+void get_function_args(char *start){
+	char _tmp=' '
+	while(*start=='{'){
+		char * tmp = malloc(sizeof(char)*MAX_STR_LEN);
+		memset(tmp, 0, MAX_STR_LEN);
+		while(*start!='}'){
+			_tmp[0]=*start;
+			tmp = str_appened(_tmp, start,&start,&ctx.plus_times);
+		}
+		var _tmp;
+		
+	}
 
 }

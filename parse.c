@@ -208,6 +208,8 @@ char * parse(char * code, char end){
 				ctx.ip++;
 			    //char * fn_name=parse(code,'{');
 				//char * fn_args=parse(code,'}');
+				char * fn_name=get_function_name(code+ctx.ip);
+				
 				break;
 			default:
 				//char _tmp[2]={0,0};
