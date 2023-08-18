@@ -1,5 +1,6 @@
 #include "toplevel.h"
 context ctx;
+/*
 char * parse(char * code,char end_char){
 	char * ret = malloc(sizeof(char)*MAX_STR_LEN);
 	memset(ret,0,sizeof(char)*MAX_STR_LEN);
@@ -177,23 +178,45 @@ char * parse(char * code,char end_char){
 	ctx.ip++;
 	_dprintf("_Parse_result: %s\n", ret);
 	return ret;
-}
+}*/
 
 char * parse(char * code, char end){
 	char * ret = malloc(sizeof(char)*MAX_STR_LEN);
 	memset(ret, 0, MAX_STR_LEN);
 	int pret = 0;
 	int count = 0;
-	int plus_time=1;
+	int plus_times=1;
+	char * tmp ;
+	char _tmp[2]={0,0};
 	while(code[ctx.ip]!=end){
 		switch(code[ctx.ip]){
 			case '{':
-				char * tmp=parse(code,'}');
+				ctx.ip++;
+				tmp=parse(code,'}');
 				ret=str_appened(ret,tmp,&pret,&plus_times);
 				break;
 			case '(':
-				char * tmp=parse(code,')');
+				ctx.ip++;
+				tmp=parse(code,')');
+				break;
+			case '$':
+				ctx.ip++;
+				tmp=parse(code,'$');
+				ret=str_appened(ret,tostring(get_var(tmp)),&pret,&plus_times);
+				break;
+			case '\\':
+				ctx.ip++;
+			    //char * fn_name=parse(code,'{');
+				//char * fn_args=parse(code,'}');
+				break;
+			default:
+				//char _tmp[2]={0,0};
+				_tmp[0]=code[ctx.ip];
+				ret=str_appened(ret,_tmp,&pret,&plus_times);
 				break;
 		}
+		ctx.ip++;
 	}
+	//ctx.ip++;
+	return ret;
 }

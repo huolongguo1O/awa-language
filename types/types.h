@@ -21,5 +21,5 @@ typedef struct _list{
 	int subtype;
 	var *items;
 }list;
-
+char * tostring(var  v);
 char * int_tostring(var v);
