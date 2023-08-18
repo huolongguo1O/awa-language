@@ -7,7 +7,7 @@ void donothing(char* fmt,...){
 	//do nothing
 }
 char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
-	_dprintf("str_appened called, %s %s %d %d %x %x\n", a, b, *pret, *max_len_plus_times, pret, max_len_plus_times);
+	_dprintf("str_appened called, %s %s %d %d %n %n\n", a, b, *pret, *max_len_plus_times, pret, max_len_plus_times);
 	if(*pret+1+strlen(b) <= MAX_STR_LEN*(*max_len_plus_times)){
 		strcpy(a+*pret,b);
 		*pret+=strlen(b);
@@ -19,7 +19,7 @@ char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
 			MAX_STR_LEN*
 			(*(max_len_plus_times))
 		);
-		_dprintf("%d, %d\n",_ret,*(max_len_plus_times));
+		_dprintf("%n, %d\n",(int )_ret,*(max_len_plus_times));
 		memset(_ret, 0, MAX_STR_LEN*(*(max_len_plus_times)-1));
 		strcpy(_ret,a);
 		strcpy(_ret+*pret,b);
