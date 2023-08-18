@@ -181,6 +181,7 @@ char * parse(char * code,char end_char){
 }*/
 
 char * parse(char * code, char end){
+	ctx.level++;
 	char * ret = malloc(sizeof(char)*MAX_STR_LEN);
 	memset(ret, 0, MAX_STR_LEN);
 	int pret = 0;
@@ -189,6 +190,7 @@ char * parse(char * code, char end){
 	char * tmp ;
 	char _tmp[2]={0,0};
 	while(code[ctx.ip]!=end){
+		
 		switch(code[ctx.ip]){
 			case '{':
 				ctx.ip++;
@@ -209,7 +211,7 @@ char * parse(char * code, char end){
 			    //char * fn_name=parse(code,'{');
 				//char * fn_args=parse(code,'}');
 				char * fn_name=get_function_name(code+ctx.ip);
-				
+
 				break;
 			default:
 				//char _tmp[2]={0,0};
