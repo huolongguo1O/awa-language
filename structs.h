@@ -5,6 +5,7 @@ typedef struct _var{
 	char * name;
 	void * value;
 	int size;
+	int level;
 	struct _var * next;
 }var;
 
