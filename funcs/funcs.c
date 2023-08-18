@@ -16,3 +16,19 @@ var  call_function(char * name){
 	}
 	return var_start;
 }
+
+char * get_function_name(char * start){
+	char * ret = malloc(sizeof(char)*MAX_STR_LEN);
+	memset(ret, 0, MAX_STR_LEN);
+	int plus_times = 1;
+	char *p;
+	char *tmp=" ";
+	p=start;
+	while(*p!=' '&&*p!='{'){
+		tmp[0]=p;
+		ret = str_appened(ret, tmp,&p,&plus_times);
+		p++;
+	}
+	return ret;
+
+}
