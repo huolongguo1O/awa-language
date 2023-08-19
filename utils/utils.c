@@ -1,6 +1,8 @@
 #include "../toplevel.h"
+int codelen;
 char * input = "11111111111111111111111111111111111111111111111111111";
 char * get_input(){
+	codelen=strlen(input);
 	return input;
 }
 void donothing(char* fmt,...){
@@ -28,4 +30,7 @@ char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
 				//free(tmp);
 		return _ret;
 	}
+}
+int check_overflow(){
+	return ctx.ip < codelen+1 ? 0 : 1;
 }

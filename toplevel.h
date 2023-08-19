@@ -12,6 +12,7 @@ extern var var_start;
 extern function function_start;
 extern function * function_last;
 extern var * var_last;
+extern int codelen;
 extern context ctx;
 char * parse(char * code,char end_char);
 char * tostring(var  v);
