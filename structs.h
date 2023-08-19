@@ -17,6 +17,7 @@ typedef struct _function{
 }function;
 
 typedef struct _context{
+	char * code;
 	int ip;
 	int level;
 }context;

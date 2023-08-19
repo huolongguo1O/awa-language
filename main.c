@@ -42,5 +42,6 @@ int main(){
 	var_start.next=(var *)-1;
 	var_last=&var_start;
 	char * code = get_input();
+	ctx.code = code;
 	return printf("%s\n",parse(code,'\0'));
 }

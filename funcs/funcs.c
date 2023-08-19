@@ -28,8 +28,9 @@ char * get_function_name(char * start){
 		tmp[0]=p;
 		ret = str_appened(ret, tmp,&p,&plus_times);
 		p++;
+		ctx.ip++;
 	}
-	ctx.ip += p-start;
+	//ctx.ip += p-start;
 	return ret;
 
 }
@@ -66,5 +67,9 @@ void get_function_args(char *start){
 		var_last = &vtmp;
 		i++;
 	}
+
+}
+
+void init_function(){
 
 }

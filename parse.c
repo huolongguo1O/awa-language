@@ -211,7 +211,8 @@ char * parse(char * code, char end){
 			    //char * fn_name=parse(code,'{');
 				//char * fn_args=parse(code,'}');
 				char * fn_name=get_function_name(code+ctx.ip);
-
+				get_function_args(code+(++ctx.ip));
+				ret=str_appened(ret,tostring(call_function(fn_name)),&pret,&plus_times);
 				break;
 			default:
 				//char _tmp[2]={0,0};
