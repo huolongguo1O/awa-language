@@ -1,7 +1,7 @@
 TARGET = main
 ARGS =  -Wall 
 CC = clang
-OUT = fly.exe
+OUT = fly
 
 main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o
 	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o 
