@@ -32,6 +32,7 @@ char * get_function_name(char * start){
 		p++;
 		ctx.ip++;
 		check_overflow();
+		fuckcheck
 	}
 	//ctx.ip += p-start;
 	return ret;
@@ -78,6 +79,8 @@ void get_function_args(char *start){
 		i++;
 	}
 	ctx.ip--;
+	_fuckcheck
+
 
 }
 

@@ -33,12 +33,12 @@ char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
 	}
 }
 int _check_overflow(){
-	return ctx.ip < codelen+1 ? 0 : 1;
+	return ctx.ip <= codelen ? 0 : 1;
 }
 void check_overflow(){
 	if(_check_overflow()){
 		printf("Overflowed! \n");
-		//abort();
+		abort();
 		isoverflow = 1;
 	}
 }

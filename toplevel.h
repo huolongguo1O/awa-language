@@ -20,11 +20,13 @@ void donothing(char* fmt,...);
 void check_overflow();
 extern int isoverflow;
 
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
 #define _dprintf printf
 #define fuckcheck if(isoverflow==1) return (void *)0;
 #define _fuckcheck if(isoverflow==1) return;
 #else
 #define _dprintf donothing
+#define fuckcheck  
+#define _fuckcheck  
 #endif
