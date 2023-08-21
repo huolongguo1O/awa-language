@@ -185,7 +185,7 @@ char * parse(char * code, char end){
 	char * ret = malloc(sizeof(char)*MAX_STR_LEN);
 	memset(ret, 0, MAX_STR_LEN);
 	int pret = 0;
-	int count = 0;
+	//int count = 0;
 	int plus_times=1;
 	char * tmp ;
 	char _tmp[2]={0,0};
@@ -194,24 +194,32 @@ char * parse(char * code, char end){
 		switch(code[ctx.ip]){
 			case '{':
 				ctx.ip++;
+				check_overflow();
+				fuckcheck
 				tmp=parse(code,'}');
 				ret=str_appened(ret,tmp,&pret,&plus_times);
 				break;
 			case '(':
 				ctx.ip++;
+				check_overflow();
+				fuckcheck
 				tmp=parse(code,')');
 				break;
 			case '$':
 				ctx.ip++;
+				check_overflow();
+				fuckcheck
 				tmp=parse(code,'$');
 				ret=str_appened(ret,tostring(get_var(tmp)),&pret,&plus_times);
 				break;
 			case '\\':
 				ctx.ip++;
+				check_overflow();
+				fuckcheck
 			    //char * fn_name=parse(code,'{');
 				//char * fn_args=parse(code,'}');
 				char * fn_name=get_function_name(code+ctx.ip);
-				get_function_args(code+(++ctx.ip));
+				get_function_args(code+(ctx.ip));
 				ret=str_appened(ret,tostring(call_function(fn_name)),&pret,&plus_times);
 				break;
 			default:
@@ -221,6 +229,8 @@ char * parse(char * code, char end){
 				break;
 		}
 		ctx.ip++;
+		check_overflow();
+		fuckcheck
 	}
 	//ctx.ip++;
 	return ret;

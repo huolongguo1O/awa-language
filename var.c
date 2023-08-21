@@ -1,8 +1,8 @@
 #include "toplevel.h"
 var get_var(char *name){
 	var *v;
-	v=&var_start;
-	while(v->next!=(var *)-1){
+	v=var_last;
+	while(v!=(var *)1){
 		if(strcmp(v->name,name)==0){
 			return *v;
 		}

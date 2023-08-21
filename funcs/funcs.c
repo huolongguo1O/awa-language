@@ -1,9 +1,10 @@
 #include "../toplevel.h"
 
 var  call_function(char * name){
+	_dprintf("call_function %s\n", name);
 	function *v;
-	v=&function_start;
-	while(v->next!=(function *)-1){
+	v=function_last;
+	while(v!=(function *)-1){
 		if(strcmp(v->name,name)==0){
 			if(v->ip==NULL)
 				break;
@@ -22,13 +23,15 @@ char * get_function_name(char * start){
 	memset(ret, 0, MAX_STR_LEN);
 	int plus_times = 1;
 	char *p;
-	char *tmp=" ";
+	char tmp[2]=" ";
 	p=start;
 	while(*p!=' '&&*p!='{'){
-		tmp[0]=p;
-		ret = str_appened(ret, tmp,&p,&plus_times);
+		tmp[0]=*p;
+		int q = p-start;
+		ret = str_appened(ret, tmp,&q,&plus_times);
 		p++;
 		ctx.ip++;
+		check_overflow();
 	}
 	//ctx.ip += p-start;
 	return ret;
@@ -36,40 +39,48 @@ char * get_function_name(char * start){
 }
 
 void get_function_args(char *start){
-	int i = 0;
-	char * _tmp= " ";
-	while(*start=='{'){
+	_dprintf("get_function_args\n");
+	char * orgstart=start;
+	int i = 1;
+	
+	char  _tmp[]= " ";
+	while(*(ctx.code+ctx.ip)=='{'){
+		
+		
 		int plus_times = 1;
+		int pret =0;
 		start++;
 		ctx.ip++;
+		check_overflow();
+		_fuckcheck
 		char * _i;
 		_i = malloc(sizeof(char)*MAX_STR_LEN);
 		memset(_i, 0, MAX_STR_LEN);
 		//convert i to str _i 
-		sprintf(_i,MAX_STR_LEN-1,"%d",i);
+		sprintf(_i,"%d",i);
 
 		char * tmp = malloc(sizeof(char)*MAX_STR_LEN);
 		memset(tmp, 0, MAX_STR_LEN);
-		while(*start!='}'){
-			_tmp[0]=*start;
-			tmp = str_appened(tmp, _tmp,&start,&plus_times);
-			start++;
-			ctx.ip++;
-		}
+		tmp = parse(ctx.code,'}');
+
 		start++;
 		ctx.ip++;
-		var vtmp;
-		vtmp.type = FL_TYPE_STRING;
-		vtmp.name = _i;
-		vtmp.value = tmp;
-		vtmp.level = ctx.level;
-		vtmp.next = var_last;
-		var_last = &vtmp;
+		check_overflow();
+		_fuckcheck
+		var *vtmp=malloc(sizeof(var));
+		
+		vtmp->type = FL_TYPE_STRING;
+		vtmp->name = _i;
+		vtmp->value = tmp;
+		vtmp->level = ctx.level;
+		vtmp->next = var_last;
+		var_last = vtmp;
 		i++;
 	}
+	ctx.ip--;
 
 }
 
 void init_function(){
-
+	init_set();
 }

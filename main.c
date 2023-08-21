@@ -33,7 +33,7 @@ function function_start;
 function * function_last;
 char * name_null="null";
 //char * parse(char * code);
-
+/*
 int main(){
 	var_start.type=FL_TYPE_NULL;
 	var_start.name=name_null;
@@ -41,7 +41,30 @@ int main(){
 	var_start.size=5;
 	var_start.next=(var *)-1;
 	var_last=&var_start;
+	function_start.name=name_null;
+	function_start.ip=(void *)-1;
+	function_start.next=(function *)-1;
+	function_last=&function_start;
+	init_function();
 	char * code = get_input();
 	ctx.code = code;
-	return printf("%s\n",parse(code,'\0'));
+	printf("%s\n",parse(code,'\0'));
+	return 0;
+}*/
+int LLVMFuzzerTestOneInput(char *Data, size_t Size) {
+	codelen=Size;
+	var_start.type=FL_TYPE_NULL;
+	var_start.name=name_null;
+	var_start.value=(void *)name_null;
+	var_start.size=5;
+	var_start.next=(var *)-1;
+	var_last=&var_start;
+	function_start.name=name_null;
+	function_start.ip=(void *)-1;
+	function_start.next=(function *)-1;
+	function_last=&function_start;
+	init_function();
+	ctx.code = Data;
+  parse(Data,'\0');
+  return 0;  // Values other than 0 and -1 are reserved for future use.
 }

@@ -1,10 +1,10 @@
 TARGET = main
-ARGS = -Wall -g
-CC = gcc
+ARGS =  -Wall -g -fsanitize=fuzzer,address
+CC = clang
 OUT = fly.exe
 
-main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o
-	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o -g
+main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o
+	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o -g -fsanitize=fuzzer,address,memory 
 
 build/var.o:var.c
 	$(CC) -c var.c -o build/var.o $(ARGS)
@@ -41,6 +41,9 @@ build/null.o:types/null.c
 
 build/types.o:types/types.c
 	$(CC) -c types/types.c -o build/types.o $(ARGS)
+
+build/set.o:funcs/set.c
+	$(CC) -c funcs/set.c -o build/set.o $(ARGS)
 
 clean:
 	rm -rf build/*
