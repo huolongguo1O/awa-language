@@ -2,9 +2,16 @@
 int codelen;
 char * input = "(\\set{aa}{bb})$aa$";
 int isoverflow = 0;
-char * get_input(){
-	codelen=strlen(input);
-	return input;
+char * get_input() {
+   char * input = malloc(sizeof(char)*1024);
+   memset(input, 0, sizeof(char)*1024);
+   char tmp[1024];
+   int counter=0;
+   for(int i;fgets(tmp, 1024, stdin);){
+		input=str_appened(input, tmp,&counter,&i);
+   };
+   codelen=counter;
+   return input;
 }
 void donothing(char* fmt,...){
 	//do nothing
