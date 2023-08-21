@@ -1,6 +1,6 @@
 // A new language
 /////////////////////////////////////////////////////////////////////////////////////////
-/*                           The Fly(FLy yes) Language                                 */
+/*                           The AwA(AwA WaW Awa) Language                                 */
 /////////////////////////////////////////////////////////////////////////////////////////
 /*                               By huolongguo10                                       */
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +33,7 @@ function function_start;
 function * function_last;
 char * name_null="null";
 //char * parse(char * code);
-/*
+
 int main(){
 	var_start.type=FL_TYPE_NULL;
 	var_start.name=name_null;
@@ -50,7 +50,7 @@ int main(){
 	ctx.code = code;
 	printf("%s\n",parse(code,'\0'));
 	return 0;
-}*/
+}
 int LLVMFuzzerTestOneInput(char *Data, size_t Size) {
 	codelen=Size;
 	var_start.type=FL_TYPE_NULL;
