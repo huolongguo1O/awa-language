@@ -210,6 +210,12 @@ char * parse(char * code, char end){
 				break;
 			case '$':
 				ctx.ip++;
+				if(code[ctx.ip]=='$'&&code[ctx.ip++]=='$') {
+					_tmp[0]=code[ctx.ip];
+					ret=str_appened(ret,_tmp,&pret,&plus_times);
+					break;
+				}
+				
 				check_overflow();
 				fuckcheck
 				tmp=parse(code,'$');

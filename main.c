@@ -34,7 +34,7 @@ function * function_last;
 char * name_null="null";
 //char * parse(char * code);
 
-int main(){
+int main(int argc, char * argv[]){
 	var_start.type=FL_TYPE_NULL;
 	var_start.name=name_null;
 	var_start.value=(void *)name_null;
@@ -46,7 +46,9 @@ int main(){
 	function_start.next=(function *)-1;
 	function_last=&function_start;
 	init_function();
-	char * code = get_input();
+	if(argc==0) abort();
+
+	char * code = get_input(argv[1]);
 	ctx.code = code;
 	printf("%s\n",parse(code,'\0'));
 	return 0;
