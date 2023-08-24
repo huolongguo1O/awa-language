@@ -2,22 +2,26 @@
 int codelen=1023;
 //char * input = "(\\set{aa}{bb})$aa$";
 int isoverflow = 0;
-char * get_input() {
-	/*
+char * get_input(char* filename) {
+	FILE * fp =fopen(filename, "r");
+	if(fp==NULL){
+		printf("Error opening file\n");
+		abort();
+	}
    char * input = malloc(sizeof(char)*1024);
    memset(input, 0, sizeof(char)*1024);
    char tmp[1024];
    int counter=0;
-   for(int i;fgets(tmp, 1024, stdin);){
+   for(int i;fgets(tmp, 1024, fp);){
 		input=str_appened(input, tmp,&counter,&i);
    };
-   codelen=counter;
+   codelen=strlen(input);
    return input;
-   */
+   /*
    char * input = malloc(sizeof(char)*1024);
    memset(input, 0, sizeof(char)*1024);
    fgets(input, 1023, stdin);
-   return input;
+   return input;*/
 }
 void donothing(char* fmt,...){
 	//do nothing
