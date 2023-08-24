@@ -1,4 +1,4 @@
-# The AwA(AwA WaW Awa) Language
+# The AwA(AwA WaW AwA) Language
 
 ## What is awa-lang
 AwA-lang is a "LaTeX-like" programming language.
