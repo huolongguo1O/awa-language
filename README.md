@@ -24,6 +24,9 @@ AwA-lang is a "LaTeX-like" programming language.
 ### if
 `{\if{\eq{a}{b}} awa-code if true}`
 
+## Example:
+``
+
 ## Usage:
 `./awa example.txt`
 
