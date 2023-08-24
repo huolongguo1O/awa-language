@@ -26,7 +26,7 @@ AwA-lang is a "LaTeX-like" programming language.
 
 //if(argc==0) 有没有一种可能之心argc=1（
 ## Example:
-`({\def{print} $1$})(\set{hello}{llo})he{\if{\eq{$hello$}{llo}} llo}\print{world}`
+`({\def{print} $1$})(\set{hello}{llo})he{\if{\eq{$hello$}{llo}} llo}\print{world \input }`
 
 ## Usage:
 `./awa example.txt`
