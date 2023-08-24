@@ -6,7 +6,7 @@ void init_set(){
 	function *set = malloc(sizeof(function));
 	set -> name = name_set;
 	set -> ip = func_set;
-	set -> _ip=0;
+	set -> _ip = 0;
 	set -> next = function_last;
 	function_last = set;
 }

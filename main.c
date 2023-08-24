@@ -60,7 +60,8 @@ int LLVMFuzzerTestOneInput(char *Data, size_t Size) {
 	var_start.next=(var *)-1;
 	var_last=&var_start;
 	function_start.name=name_null;
-	function_start.ip=(void *)-1;
+	function_start.ip=(void *)0;
+	function_start._ip=0;
 	function_start.next=(function *)-1;
 	function_last=&function_start;
 	init_function();

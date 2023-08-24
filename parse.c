@@ -189,6 +189,7 @@ char * parse(char * code, char end){
 	int plus_times=1;
 	char * tmp ;
 	char _tmp[2]={0,0};
+	ctx.end_char = end;
 	while(code[ctx.ip]!=end){
 		
 		switch(code[ctx.ip]){
@@ -197,6 +198,7 @@ char * parse(char * code, char end){
 				check_overflow();
 				fuckcheck
 				tmp=parse(code,'}');
+				ctx.end_char = end;
 				ret=str_appened(ret,tmp,&pret,&plus_times);
 				break;
 			case '(':
@@ -204,12 +206,14 @@ char * parse(char * code, char end){
 				check_overflow();
 				fuckcheck
 				tmp=parse(code,')');
+				ctx.end_char = end;
 				break;
 			case '$':
 				ctx.ip++;
 				check_overflow();
 				fuckcheck
 				tmp=parse(code,'$');
+				ctx.end_char = end;
 				ret=str_appened(ret,tostring(get_var(tmp)),&pret,&plus_times);
 				break;
 			case '\\':
@@ -220,7 +224,9 @@ char * parse(char * code, char end){
 				//char * fn_args=parse(code,'}');
 				char * fn_name=get_function_name(code+ctx.ip);
 				get_function_args(code+(ctx.ip));
+				ctx.end_char = end;
 				ret=str_appened(ret,tostring(call_function(fn_name)),&pret,&plus_times);
+				ctx.end_char = end;
 				break;
 			default:
 				//char _tmp[2]={0,0};
@@ -232,6 +238,8 @@ char * parse(char * code, char end){
 		check_overflow();
 		fuckcheck
 	}
+	//clean_var();
+	//clean_func();
 	//ctx.ip++;
 	return ret;
 }

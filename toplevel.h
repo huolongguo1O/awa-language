@@ -19,6 +19,8 @@ char * tostring(var  v);
 void donothing(char* fmt,...);
 void check_overflow();
 extern int isoverflow;
+void clean_func();
+void clean_var();
 
 //#define DEBUG
 #ifdef DEBUG

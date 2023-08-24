@@ -6,12 +6,28 @@ var  call_function(char * name){
 	v=function_last;
 	while(v!=(function *)-1){
 		if(strcmp(v->name,name)==0){
-			if(v->ip==NULL)
-				break;
-			//var *func()=v->ip;
-			
-			var ret=((var (*)())v->ip)();
-			return ret;
+			if(v->ip==NULL&&v->_ip!=NULL){
+				int orgip=ctx.ip;
+				ctx.ip=v->_ip;
+				char * tmp=parse(ctx.code,'}');
+				ctx.ip=orgip;
+				var *vtmp=malloc(sizeof(var));
+		
+				vtmp->type = FL_TYPE_STRING;
+				//vtmp->name = _i;
+				vtmp->value = tmp;
+				vtmp->level = ctx.level;
+				//vtmp->next = var_last;
+				//var_last = vtmp;
+				return *vtmp;
+			}else
+			if(v->ip!=NULL && v->_ip==NULL) {
+				
+				//var *func()=v->ip;
+				
+				var ret=((var (*)())v->ip)();
+				return ret;
+			}
 		}
 		v=v->next;
 	}
@@ -86,4 +102,18 @@ void get_function_args(char *start){
 
 void init_function(){
 	init_set();
+	init_if();
+	init_eq();
+	init_def();
+}
+void clean_func(){
+	return;
+	function *v;
+	v=function_last;
+	while(v->level==ctx.level){
+		free(v);
+		v=v->next;
+		function_last=v;
+	}
+
 }

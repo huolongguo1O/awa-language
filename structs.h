@@ -13,6 +13,7 @@ typedef struct _function{
 	void * ip;
 	int _ip;
 	char * name;
+	int level;
 	struct _function * next;
 }function;
 
@@ -20,6 +21,7 @@ typedef struct _context{
 	char * code;
 	int ip;
 	int level;
+	char end_char;
 }context;
 #endif
 
