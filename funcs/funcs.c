@@ -51,6 +51,7 @@ char * get_function_name(char * start){
 		fuckcheck
 	}
 	//ctx.ip += p-start;
+	
 	return ret;
 
 }
@@ -94,7 +95,7 @@ void get_function_args(char *start){
 		var_last = vtmp;
 		i++;
 	}
-	ctx.ip--;
+	if(i!=1) ctx.ip--;
 	_fuckcheck
 
 

@@ -28,7 +28,7 @@ void donothing(char* fmt,...){
 }
 char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
 	_dprintf("str_append called, %s %s %d %d %x %x\n", a, b, *pret, *max_len_plus_times, pret, max_len_plus_times);
-	if(*pret+1+strlen(b) <= MAX_STR_LEN*(*max_len_plus_times)){
+	/*if(*pret+1+strlen(b) <= MAX_STR_LEN*(*max_len_plus_times)){
 		strcpy(a+*pret,b);
 		*pret+=strlen(b);
 		return a;
@@ -47,7 +47,23 @@ char * str_appened(char * a, char * b, int * pret, int * max_len_plus_times){
 		free(a);
 				//free(tmp);
 		return _ret;
+	}*/
+	char * _ret = a;
+	while(*pret+1+strlen(b) > MAX_STR_LEN*(*max_len_plus_times)){
+		*max_len_plus_times += 1;
+		_ret = malloc(
+			sizeof(char)*
+			MAX_STR_LEN*
+			(*(max_len_plus_times))
+		);
+		_dprintf("%x, %d\n",_ret,*(max_len_plus_times));
+		memset(_ret, 0, MAX_STR_LEN*(*(max_len_plus_times)-1));
+		strcpy(_ret,a);
+		free(a);
 	}
+	strcpy(_ret+*pret,b);
+	*pret+=strlen(b);
+	return _ret;
 }
 int _check_overflow(){
 	return ctx.ip <= codelen ? 0 : 1;
