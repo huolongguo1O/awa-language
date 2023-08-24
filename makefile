@@ -1,7 +1,7 @@
 TARGET = main
 ARGS =  -Wall
-CC = clang
-OUT = awa.exe
+CC = gcc
+OUT = awalang
 
 main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o
 	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o 
