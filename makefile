@@ -1,10 +1,10 @@
 TARGET = main
 ARGS =  -Wall -g
-CC = gcc
-OUT = fly.exe
+CC = clang
+OUT = awa.exe
 
-main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o
-	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o -g
+main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o
+	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o -g
 
 build/var.o:var.c
 	$(CC) -c var.c -o build/var.o $(ARGS)
@@ -53,6 +53,9 @@ build/eq.o:funcs/eq.c
 
 build/def.o:funcs/def.c
 	$(CC) -c funcs/def.c -o build/def.o $(ARGS)
+
+build/input.o:funcs/input.c
+	$(CC) -c funcs/input.c -o build/input.o $(ARGS)
 
 clean:
 	rm -rf build/*
