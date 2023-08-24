@@ -6,6 +6,7 @@ AwA-lang is a "LaTeX-like" programming language.
 ## Grammar
 ### Code blocks
 1.`{awa code}`
+
 2.`(awa code)` Ignore output
 
 ### call functions
@@ -22,10 +23,6 @@ AwA-lang is a "LaTeX-like" programming language.
 
 ### if
 `{\if{\eq{a}{b}} awa-code if true}`
-
-### Input
-
-`/input`
 
 ## Usage:
 `./awa example.txt`
