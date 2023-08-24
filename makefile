@@ -1,10 +1,10 @@
 TARGET = main
-ARGS =  -Wall -g
+ARGS =  -Wall
 CC = clang
 OUT = awa.exe
 
 main:build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o
-	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o -g
+	$(CC) -o $(OUT) build/var.o build/main.o build/parse.o build/utils.o build/funcs.o build/float.o build/function.o build/int.o build/string.o build/object.o build/null.o build/types.o build/set.o build/if.o build/eq.o build/def.o build/input.o 
 
 build/var.o:var.c
 	$(CC) -c var.c -o build/var.o $(ARGS)
