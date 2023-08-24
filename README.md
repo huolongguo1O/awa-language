@@ -21,12 +21,11 @@ AwA-lang is a "LaTeX-like" programming language.
 `\set{var_name}{value}`
 
 ### if
+`{\if{\eq{a}{b}} awa-code if true}`
 
 ### Input
 
-```awalang
-/input
-```
+`/input`
 
 ## Usage:
 `./awa example.txt`
