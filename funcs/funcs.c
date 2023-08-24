@@ -6,7 +6,7 @@ var  call_function(char * name){
 	v=function_last;
 	while(v!=(function *)-1){
 		if(strcmp(v->name,name)==0){
-			if(v->ip==NULL&&v->_ip!=NULL){
+			if(v->ip==NULL&&v->_ip!=0){
 				int orgip=ctx.ip;
 				ctx.ip=v->_ip;
 				char * tmp=parse(ctx.code,'}');
@@ -21,7 +21,7 @@ var  call_function(char * name){
 				//var_last = vtmp;
 				return *vtmp;
 			}else
-			if(v->ip!=NULL && v->_ip==NULL) {
+			if(v->ip!=NULL && v->_ip==0) {
 				
 				//var *func()=v->ip;
 				
@@ -57,15 +57,15 @@ char * get_function_name(char * start){
 
 void get_function_args(char *start){
 	_dprintf("get_function_args\n");
-	char * orgstart=start;
+	//char * orgstart=start;
 	int i = 1;
 	
-	char  _tmp[]= " ";
+	//char  _tmp[]= " ";
 	while(*(ctx.code+ctx.ip)=='{'){
 		
 		
-		int plus_times = 1;
-		int pret =0;
+		//int plus_times = 1;
+		//int pret =0;
 		start++;
 		ctx.ip++;
 		check_overflow();
@@ -105,6 +105,7 @@ void init_function(){
 	init_if();
 	init_eq();
 	init_def();
+	init_input();
 }
 void clean_func(){
 	return;

@@ -11,6 +11,7 @@ void init_eq();
 var func_eq();
 void init_def();
 var func_def();
+void init_input();
 extern char * name_True;
 extern char * name_False;
 extern char * name_None;
